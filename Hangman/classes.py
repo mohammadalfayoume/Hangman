@@ -14,18 +14,27 @@ class Hangman:
         self.words=["redemption"]
 
         return self.words
-
-    def set_guissing_word(self,guissing_word):
+    def welcome_msg(self):
+        print('''
+☆☆☆ Welcome to Hangman Game ☆☆☆
+☆☆☆ Hangman is a game where you try to save someone from hanging ☆☆☆
+☆☆☆ You will be asked to guess the correct word ☆☆☆
+☆☆☆ Make sure you read the hints carefully, his life depends on it ☆☆☆
+        \n\t''')
+    def set_guessing_word(self,guissing_word):
         self.guissing_word=guissing_word
+        return guissing_word
 
-    def guiss_word_logic(self):
+    def guess_word_logic(self):
+        
         if self.counter==0:
             print("Sorry, the person is hanged :(")
         else: 
             print(f"You have {self.counter} guesses")
             if self.counter==5:
+                self.welcome_msg()
                 print(self.hints[self.counter-1])
-            self.set_guissing_word(input())
+            self.set_guessing_word(input())
 
         if self.guissing_word not in self.get_words():
             if self.counter==5:
@@ -101,37 +110,21 @@ class Hangman:
             print(f"{self.guissing_word} is NOT correct, try again\n{self.hints[self.counter-2]}")
 
             self.counter -=1
-            self.guiss_word_logic()
-        
+            self.guess_word_logic()
         
 
-        # while counter > 0:
-        #     if counter==5:
-        #         print("You have 5 guesses, try to help hanged man ^^ \n Let's start...")
-        #         time.sleep(1)
-        #     else:
-        #         self.set_guissing_word(input("try another word: "))
-        #     print(f"you have {counter} guisses")
-        #     if self.guissing_word in self.get_words():
-                
-        #         print("you are right")
-        #     else:
-        #         print(f"{self.guissing_word} wrong answer")
-        #         # self.guissing_word=input("try another word: ")
-        #         counter -=1
-        #         continue
-            
+hangman=Hangman()
+hangman.guess_word_logic()
 
-x=Hangman()
-x.guiss_word_logic()
+
 
 # class Guiss(Hangman):
 #     def __init__(self):
 #         super().__init__()
-#     def guiss_word_logic(self):
+#     def guess_word_logic(self):
 #         counter=1
 #         while counter <= 5:
-#             if self.set_guissing_word() in self.get_words():
+#             if self.set_guessing_word() in self.get_words():
 #                 return "you are right"
 #             else: pass
                 
