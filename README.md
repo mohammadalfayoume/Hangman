@@ -12,10 +12,10 @@ A game in which the object is for one player to guess the letters of an unknown 
 
 Write this command in your terminal
 
->python Hangman/classes.py
+>python Hangman/hangman.py
 
 ## How to test your application
 
 Write this command in your terminal
 
->pytest
+>pytest -s
