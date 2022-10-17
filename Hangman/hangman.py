@@ -26,7 +26,7 @@ class Hangman:
         
     def get_difficulty(self):
         time.sleep(1)
-        userInput = input('Select Difficuilty  Easy:e   Hard:h  :  ')
+        userInput = input('Select Difficuilty  Easy:e  Medium:m   Hard:h  :  ')
         while True:
             
             if  self.input_validation(userInput):
@@ -34,12 +34,13 @@ class Hangman:
                 break
             else:
                 time.sleep(1)
-                userInput = input('Select Difficuilty  Easy:e   Hard:h  :  ')
+                userInput = input('Select Difficuilty  Easy:e  Medium:m  Hard:h  :  ')
     def input_validation(self,input):
-        if input.lower() == 'e' or input.lower() == 'h':
+        if input.lower() == 'e' or  input.lower() == 'm' or  input.lower() == 'h':
             return True
         else:
             return False
+     ##
 
 
     def select_hints(self,select):
@@ -55,19 +56,35 @@ class Hangman:
         "third hint: Forgiving someone who has offended you",
         "second hint: something like forgivness",
         "first hint: the action of saving or being saved from sin"]
-        if self.select_difficulty(select):
+
+        hint3 =["last hint: Please, save him, his soul is in your hands :(",
+        "fourth hint: The slam dunk is the best way to score  a gole ",
+        "third hint: you cant touch the ball with your legs ",
+        "second hint: you play it using orange  ball  ",
+        "first hint: secound most poupuler sport in Amiraca "]
+
+        if self.select_difficulty(select)=="easy":
             self.riddle = 'This is the easy riddle, you have some hints and you have to guess the correct answer'
             self.hints = hint1
             self.words= ["watermelon"]
-        else:
+
+        elif self.select_difficulty(select)=="hard":
             self.riddle = 'This is the hard riddle, you have some hints and you have to guess the correct answer'
             self.hints = hint2
             self.words=["redemption","ransom","rescue","redeem"]
+
+        elif self.select_difficulty(select)=="medium":
+            self.riddle = 'This is the medium riddle, you have some hints and you have to guess the correct answer'
+            self.hints = hint3
+            self.words=["basketball" ,"basket ball"]    
     def select_difficulty(self,difficulty):
         if difficulty== "e":
-            return True
-        else:
-            return False
+            return "easy"
+        elif difficulty== "m":
+            return "medium"
+        elif difficulty== "h":
+            return "hard"
+        
     def get_difficulty_data(self,difficulty):
         
         self.select_hints(difficulty)
