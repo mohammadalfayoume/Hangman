@@ -25,4 +25,13 @@ def test_select_hard_difficulty_data():
         "second hint: something like forgivness",
         "first hint: the action of saving or being saved from sin"]
     assert hangman.get_difficulty_data("h")[2]==["redemption","ransom","rescue","redeem"]
+
+def test_select_m_difficulty_data():
+    assert hangman.get_difficulty_data("m")[0]=='This is the medium riddle, you have some hints and you have to guess the correct answer'
+    assert hangman.get_difficulty_data("m")[1]==["last hint: Please, save him, his soul is in your hands :(",
+        "fourth hint: The slam dunk is the best way to score  a gole ",
+        "third hint: you cant touch the ball with your legs ",
+        "second hint: you play it using orange  ball  ",
+        "first hint: secound most poupuler sport in Amiraca "]
+    assert hangman.get_difficulty_data("m")[2]==["basketball" ,"basket ball"]
     
